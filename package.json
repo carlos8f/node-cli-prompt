@@ -1,0 +1,31 @@
+{
+  "author": "Carlos Rodriguez <carlos@s8f.org> (http://s8f.org/)",
+  "name": "cli-prompt",
+  "description": "A tiny CLI prompter",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/carlos8f/node-cli-prompt.git"
+  },
+  "homepage": "https://github.com/carlos8f/node-cli-prompt",
+  "keywords": [
+    "prompt",
+    "cli",
+    "readline",
+    "input",
+    "terminal",
+    "console",
+    "wizard"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/carlos8f/node-cli-prompt/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.8.0"
+  }
+}
