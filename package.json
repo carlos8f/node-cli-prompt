@@ -21,6 +21,9 @@
   "devDependencies": {
     "mocha": "*"
   },
+  "scripts": {
+    "test": "make test"
+  },
   "bugs": {
     "url": "https://github.com/carlos8f/node-cli-prompt/issues"
   },
