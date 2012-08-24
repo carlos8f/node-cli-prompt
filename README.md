@@ -1,4 +1,4 @@
-node-mini-prompt
-================
+node-cli-prompt
+===============
 
-A tiny prompter
+A tiny CLI prompter
