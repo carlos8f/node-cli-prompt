@@ -20,8 +20,10 @@ Exports a single function:
 ### `prompt(message, handler)`
 
 - `message`: text prompt for the user
-- `handler`: called with the user's entered text (before return key is pressed),
-  and an `end` function which pauses `stdin`, so process won't hang open.
+- `handler`: called with two arguments, once the user presses `enter`:
+    - `val`: the entered text
+    - `end`: a function which pauses `stdin`, which in most cases causes the process
+      to gracefully exit
 
 Example
 -------
