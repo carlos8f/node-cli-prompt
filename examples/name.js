@@ -1,4 +1,4 @@
-var prompt = require('../../');
+var prompt = require('../');
 
 prompt('enter your first name: ', function (val) {
   var first = val;

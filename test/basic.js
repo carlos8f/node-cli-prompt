@@ -2,7 +2,7 @@ describe('basic test', function () {
   var proc;
 
   before(function () {
-    proc = spawn('node', [resolve(__dirname, './fixtures/app.js')]);
+    proc = spawn('node', [resolve(__dirname, '../examples/name.js')]);
   });
 
   it('prompts', function (done) {
