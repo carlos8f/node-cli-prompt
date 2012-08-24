@@ -7,12 +7,12 @@ function prompt (message, cb) {
     line += buf;
 
     function findBreak () {
-      var i = line.indexOf('\n');
-      if (i >= 0) return i;
+      var idx = line.indexOf('\n');
+      if (idx >= 0) return idx;
       return line.indexOf('\r');
     }
     
-    var ix;
+    var idx;
     while ((idx = findBreak()) >= 0) {
       process.stdin.removeListener('data', fn);
       return cb(line.slice(0, idx), function end () {
