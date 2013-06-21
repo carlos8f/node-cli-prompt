@@ -21,12 +21,12 @@ describe('basic test', function () {
   });
 
   it('accepts last name', function (done) {
-    proc.once('close', function (code) {
+    proc.once('exit', function (code) {
       done(code !== 0 && new Error('closed with code ' + code) || null);
     });
     proc.stdout.once('data', function (chunk) {
       assert.equal(chunk.toString(), 'hi, carlos rodriguez!\n');
     });
-    proc.stdin.write('rodriguez\n');
+    proc.stdin.end('rodriguez\n');
   });
 });
