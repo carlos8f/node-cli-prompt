@@ -15,8 +15,6 @@ $ npm install --save cli-prompt
 Usage
 -----
 
-Exports a single function:
-
 ### `prompt(message, handler)`
 
 - `message`: text prompt for the user
@@ -25,7 +23,7 @@ Exports a single function:
 Example
 -------
 
-```
+```js
 var prompt = require('cli-prompt');
 
 prompt('enter your first name: ', function (val) {
@@ -33,6 +31,16 @@ prompt('enter your first name: ', function (val) {
   prompt('and your last name: ', function (val) {
     console.log('hi, ' + first + ' ' + val + '!');
   });
+});
+```
+
+### Password/hidden input
+
+```js
+var prompt = require('cli-prompt');
+
+prompt.password('tell me a secret: ', function (val) {
+  console.log(val);
 });
 ```
 
