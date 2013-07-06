@@ -39,7 +39,7 @@ function prompt (message, hideInput, cb) {
       }
       if (key.name === 'backspace') line = line.slice(0, -1);
     }
-    if (key && key.name !== 'backspace') line += c;
+    if (!key || key.name !== 'backspace') line += c;
   }).resume();
 }
 module.exports = prompt;
