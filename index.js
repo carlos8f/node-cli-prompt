@@ -13,6 +13,9 @@ function prompt (message, hideInput, cb) {
     if (process.stdin.setRawMode) {
       process.stdin.setRawMode(mode);
     }
+    else if (process.stdout.isTTY) {
+      tty.setRawMode(mode);
+    }
   }
   if (hideInput) setRawMode(true);
 
