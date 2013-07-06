@@ -18,7 +18,7 @@
     "wizard"
   ],
   "dependencies": {
-    "keypress": "carlos8f/keypress"
+    "keypress": "git://github.com/carlos8f/keypress"
   },
   "devDependencies": {
     "mocha": "*",
