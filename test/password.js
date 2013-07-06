@@ -1,4 +1,4 @@
-describe('basic test', function () {
+describe('password', function () {
   it('works', function (done) {
     suppose('node', [resolve(__dirname, '../examples/password.js')])
       //.debug(fs.createWriteStream('/tmp/debug.txt')) //optional writeable output stream
