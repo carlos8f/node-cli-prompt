@@ -30,8 +30,5 @@
   "bugs": {
     "url": "https://github.com/carlos8f/node-cli-prompt/issues"
   },
-  "license": "MIT",
-  "engines": {
-    "node": ">= 0.8.0"
-  }
+  "license": "MIT"
 }
