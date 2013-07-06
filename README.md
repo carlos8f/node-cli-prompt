@@ -20,10 +20,7 @@ Exports a single function:
 ### `prompt(message, handler)`
 
 - `message`: text prompt for the user
-- `handler`: function to be called with two arguments, once the user presses `enter`:
-    - `val`: the entered text
-    - `end`: a function which pauses `stdin`, which in most cases causes the process
-      to gracefully exit
+- `handler`: function to be called with the entered text
 
 Example
 -------
@@ -33,9 +30,8 @@ var prompt = require('cli-prompt');
 
 prompt('enter your first name: ', function (val) {
   var first = val;
-  prompt('and your last name: ', function (val, end) {
+  prompt('and your last name: ', function (val) {
     console.log('hi, ' + first + ' ' + val + '!');
-    end();
   });
 });
 ```

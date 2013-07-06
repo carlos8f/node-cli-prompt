@@ -17,9 +17,12 @@
     "console",
     "wizard"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "keypress": "~0.2.0"
+  },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "suppose": "~0.2.0"
   },
   "scripts": {
     "test": "make test"
