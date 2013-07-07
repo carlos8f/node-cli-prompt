@@ -2,7 +2,7 @@
   "author": "Carlos Rodriguez <carlos@s8f.org> (http://s8f.org/)",
   "name": "cli-prompt",
   "description": "A tiny CLI prompter",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/carlos8f/node-cli-prompt.git"
