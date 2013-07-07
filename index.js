@@ -52,3 +52,54 @@ function password (message, cb) {
   });
 }
 module.exports.password = password;
+
+function multi (questions, cb) {
+  var idx = 0, ret = {};
+  (function ask () {
+    var q = questions[idx++];
+    if (typeof q === 'string') {
+      q = {key: q};
+    }
+    function record (val) {
+      function retry () {
+        idx--;
+        ask();
+      }
+      if (q.required && typeof q.default === 'undefined' && !val) return retry();
+      if (q.validate) {
+        try {
+           var ok = q.validate(val);
+        }
+        catch (e) {
+          console.log(e.message);
+          return retry();
+        }
+        if (ok === false) return retry();
+      }
+      if (!val && typeof q.default !== 'undefined') {
+        val = def;
+      }
+      if (q.type === 'number') {
+        val = Number(val);
+        if (Number.isNaN(val)) return retry();
+      }
+      else if (q.type === 'boolean') val = val.match(/^(yes|ok|true|y)$/i) ? true : false;
+      if (typeof q.key !== 'undefined') ret[q.key] = val;
+      if (questions[idx]) ask();
+      else cb(ret);
+    }
+    var label = (q.label || q.key) + ': ';
+    if (q.default) {
+      var def = (typeof q.default === 'function') ? val = q.default.call(ret) : q.default;
+      label += '(' + def + ') ';
+    }
+    else if (q.type === 'boolean') {
+      label += '(y/n) ';
+      q.validate = function (val) {
+        if (!val.match(/^(yes|ok|true|y|no|false|n)$/i)) return false;
+      };
+    }
+    prompt(label, q.type === 'password', record);
+  })();
+}
+module.exports.multi = multi;
