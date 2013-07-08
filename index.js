@@ -21,14 +21,13 @@ function prompt (message, hideInput, cb) {
 
   process.stdout.write(message);
 
-  var line = '';
-  process.stdin.on('keypress', function (c, key) {
+  function listen (c, key) {
     if (key) {
       if (key.ctrl && key.name === 'c') {
         process.exit();
       }
       else if (key.name === 'return' || key.name === 'enter') {
-        process.stdin.removeAllListeners('keypress');
+        process.stdin.removeListener('keypress', listen);
         process.stdin.pause();
         if (hideInput) {
           setRawMode(false);
@@ -40,7 +39,10 @@ function prompt (message, hideInput, cb) {
       if (key.name === 'backspace') line = line.slice(0, -1);
     }
     if (!key || key.name !== 'backspace') line += c;
-  }).resume();
+  }
+
+  var line = '';
+  process.stdin.on('keypress', listen).resume();
 }
 module.exports = prompt;
 
