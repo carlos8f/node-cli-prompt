@@ -70,7 +70,7 @@ function multi (questions, cb) {
       if (q.required && typeof q.default === 'undefined' && !val) return retry();
       if (q.validate) {
         try {
-           var ok = q.validate(val);
+           var ok = q.validate.call(ret, val);
         }
         catch (e) {
           console.log(e.message);
