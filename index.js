@@ -68,6 +68,9 @@ function multi (questions, cb) {
         ask();
       }
       if (q.required && typeof q.default === 'undefined' && !val) return retry();
+      if (!val && typeof q.default !== 'undefined') {
+        val = def;
+      }
       if (q.validate) {
         try {
            var ok = q.validate.call(ret, val);
@@ -77,9 +80,6 @@ function multi (questions, cb) {
           return retry();
         }
         if (ok === false) return retry();
-      }
-      if (!val && typeof q.default !== 'undefined') {
-        val = def;
       }
       if (q.type === 'number') {
         val = Number(val);
