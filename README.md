@@ -77,6 +77,12 @@ prompt.multi([
 ], console.log);
 ```
 
+---
+
+### Thanks
+
+Thanks to @mm-gmbd for contributing Windows a support patch.
+
 - - -
 
 ### Developed by [Terra Eclipse](http://www.terraeclipse.com)
