@@ -26,14 +26,23 @@ function prompt (message, hideInput, cb) {
       if (key.ctrl && key.name === 'c') {
         process.exit();
       }
-      else if (key.name === 'return' || key.name === 'enter') {
+      else if (key.name === 'return'){
+        if (hideInput == true){
+          process.stdin.removeListener('keypress', listen);
+          process.stdin.pause();
+          setRawMode(false);
+          console.log();
+          cb(line, function () {}); // for backwards-compatibility, fake end() callback
+        }
+        return;
+      } else if (key.name === 'enter') {
         process.stdin.removeListener('keypress', listen);
         process.stdin.pause();
         if (hideInput) {
           setRawMode(false);
           console.log();
         }
-        cb(line, function () {}); // for backwards-compatibility, fake end() callback
+        cb(line.trim(), function () {}); // for backwards-compatibility, fake end() callback
         return;
       }
       if (key.name === 'backspace') line = line.slice(0, -1);
@@ -97,7 +106,7 @@ function multi (questions, cb) {
     }
     else if (q.type === 'boolean') {
       label += '(y/n) ';
-      q.validate = function (val) {
+      q.validate = function (val){
         if (!val.match(/^(yes|ok|true|y|no|false|n)$/i)) return false;
       };
     }
