@@ -35,7 +35,7 @@ function prompt (message, hideInput, cb) {
           cb(line, function () {}); // for backwards-compatibility, fake end() callback
         }
         return;
-      } else if (key.name === 'enter') {
+      } else if (key.name === 'enter' || key.sequence === '\r\n') {
         process.stdin.removeListener('keypress', listen);
         process.stdin.pause();
         if (hideInput) {
