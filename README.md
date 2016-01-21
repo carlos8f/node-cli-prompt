@@ -81,7 +81,7 @@ prompt.multi([
 
 ### Thanks
 
-Thanks to @mm-gmbd for contributing Windows a support patch.
+Thanks to @mm-gmbd and @apieceofbart for contributing Windows support patches.
 
 - - -
 
