@@ -10,4 +10,22 @@ describe('basic test', function () {
         done();
       });
   });
+
+  it('calls onError for premature end', function (done) {
+    var gotError = false;
+    suppose('node', [resolve(__dirname, '../examples/name.js')])
+      // Output to stderr is wrapped into an Error
+      .on('error', function (err) {
+        assert.strictEqual(
+            'unable to read first name: Error: stdin has ended\n',
+            err.message
+        );
+        gotError = true;
+      })
+      .end(function (code) {
+        assert(!code);
+        assert(gotError);
+        done();
+      });
+  });
 });
