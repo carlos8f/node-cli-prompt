@@ -1,10 +1,13 @@
 describe('password', function () {
   it('works', function (done) {
-    suppose('node', [resolve(__dirname, '../examples/password.js')])
-      //.debug(fs.createWriteStream('/tmp/debug.txt')) //optional writeable output stream
-      .on('tell me a secret: ').respond('earthworn\bm jim\n')
-      .on('earthworm jim\n').respond('hey')
-      .error(assert.ifError)
+    var options = {
+      //optional writeable output stream
+      //debug: fs.createWriteStream('/tmp/debug.txt')
+    };
+    suppose('node', [resolve(__dirname, '../examples/password.js')], options)
+      .when('tell me a secret: ').respond('earthworn\bm jim\n')
+      .when('earthworm jim\n').respond('hey')
+      .on('error', assert.ifError)
       .end(function (code) {
         assert(!code);
         done();
