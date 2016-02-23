@@ -15,10 +15,13 @@ $ npm install --save cli-prompt
 Usage
 -----
 
-### `prompt(message, handler)`
+### `prompt(message, onValue, [onError])`
 
 - `message`: text prompt for the user
-- `handler`: function to be called with the entered text
+- `onValue`: function to be called (after user hits enter/return) with the entered text
+- `onError`: optional function to receive an error, if STDIN has already ended, for example.
+
+Note: cli-prompt will not work if STDIN has ended. If provided, onError will be called in this case.
 
 Example
 -------
@@ -43,9 +46,7 @@ prompt('enter your first name: ', function (val) {
 ```js
 var prompt = require('cli-prompt');
 
-prompt.password('tell me a secret: ', function (val) {
-  console.log(val);
-});
+prompt.password('tell me a secret: ', console.log, console.error);
 ```
 
 ### Multiple questions
@@ -78,14 +79,15 @@ prompt.multi([
     label: 'is this ok?',
     type: 'boolean'
   }
-], console.log);
+], console.log, console.error);
 ```
 
 ---
 
 ### Thanks
 
-Thanks to @mm-gmbd and @apieceofbart for contributing Windows support patches.
+- Thanks to @kevinoid for implementing STDIN end/error detection.
+- Thanks to @mm-gmbd and @apieceofbart for contributing Windows support patches.
 
 - - -
 
