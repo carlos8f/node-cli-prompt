@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "suppose": "~0.2.0"
+    "suppose": "~0.5.0"
   },
   "scripts": {
     "test": "make test"
