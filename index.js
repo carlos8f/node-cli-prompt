@@ -23,7 +23,7 @@ function prompt (message, hideInput, onValue, onError) {
   }
   if (hideInput) setRawMode(true);
 
-  process.stdout.write(message);
+  if (message !== null) process.stdout.write(message);
 
   var gotInput = false;
 
