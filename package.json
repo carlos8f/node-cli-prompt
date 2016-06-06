@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "suppose": "~0.5.0"
+    "suppose": "git+https://github.com/carlos8f/node-suppose.git"
   },
   "scripts": {
     "test": "make test"
